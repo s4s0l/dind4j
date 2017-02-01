@@ -47,3 +47,24 @@ docker run --privileged \
     -e INTERACTIVE=true -e RUNASUID=$(id -u) \
     --rm -ti sasol/dind4j:latest bash
 ```
+
+### Running in CI
+
+Can be used also to get newer version of docker in CI. Common case for travis or 
+shippable where their versions are always few releases behind the latest.
+shippable.yml example:
+
+```$xslt
+build:
+  cache: true
+  cache_dir_list:
+    - $SHIPPABLE_BUILD_DIR/.cache
+  pre_ci_boot:
+    options: "-v $SHIPPABLE_BUILD_DIR:$SHIPPABLE_BUILD_DIR"
+  ci:
+    - >
+      docker run --privileged -w /build -v ${SHIPPABLE_BUILD_DIR}:/build 
+      --rm sasol/dind4j:latest
+      ./gradlew --no-daemon --project-cache-dir=.cache --gradle-user-home=.cache clean test
+```
+
