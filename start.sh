@@ -18,7 +18,9 @@ if [ -z ${RUNASUID+x} ]; then
         su -c "$*"
     fi
 else
-    adduser -u 1000 -D user docker
+    addgroup -g 997 docker
+    chgrp docker /var/run/docker.sock
+    adduser -u ${RUNASUID} -G docker -D user
     if [ -z ${INTERACTIVE+x} ]; then
         su user -c "$*" & wait ${!}
     else

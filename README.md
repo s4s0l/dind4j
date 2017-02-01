@@ -43,7 +43,7 @@ When using this image for running interactive command variable `INTERACTIVE=true
 must be set. So to run bash:
 
 ```$xslt
-ocker run --privileged \
+docker run --privileged \
     -e INTERACTIVE=true -e RUNASUID=$(id -u) \
     --rm -ti sasol/dind4j:latest bash
 ```
