@@ -28,8 +28,8 @@ Assuming we are in gradle project directory we can do:
 docker run --privileged \
     -e RUNASUID=$(id -u) \
     -w /build -v $(pwd):/build \
-    --rm dind4java:1.13.0 \
     --name dind4j-builder \
+    --rm sasol/dind4j:latest \
     ./gradlew --no-daemon -gradle-user-home=.cache --project-cache-dir=.cache clean test
 ``` 
 It will mount current directory as /build and run gradlew as user having id like
@@ -45,5 +45,5 @@ must be set. So to run bash:
 ```$xslt
 ocker run --privileged \
     -e INTERACTIVE=true -e RUNASUID=$(id -u) \
-    --rm -ti dind4java:1.13.0 bash
+    --rm -ti sasol/dind4j:latest bash
 ```
