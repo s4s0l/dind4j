@@ -1,5 +1,5 @@
 FROM docker:1.13.0-dind
-ENV COMPOSE_VERSION=1.10.0-rc1
+ENV COMPOSE_VERSION=1.10.0
 ENV JAVA_ALPINE_VERSION 8.111.14-r1
 
 #little overkill with pip but I'm LAZY!
