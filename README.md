@@ -1,5 +1,15 @@
 # dind4j
+[![License](https://img.shields.io/badge/License-Apache_2.0-7D287B.svg)](https://raw.githubusercontent.com/s4s0l/dind4j/master/LICENSE)
+[![Docker Pulls](https://img.shields.io/docker/pulls/sasol/dind4j.svg)](https://hub.docker.com/r/sasol/dind4j/)
+[![GitHub release](https://img.shields.io/github/release/s4s0l/dind4j.svg?style=plastic)](https://github.com/s4s0l/dind4j/releases/latest)
+
+
 Docker in Docker image with Java 8 and docker-compose meant for running gradle builds.
+
+## Versioning
+
+See [releases on github](https://github.com/s4s0l/dind4j/releases) to pick you version.
+
 
 ## Info
 This image is based on [docker:1.13.0-dind](https://hub.docker.com/r/_/docker/ "Docker Hub")

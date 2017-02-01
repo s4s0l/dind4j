@@ -1,6 +1,6 @@
 FROM docker:1.13.0-dind
 ENV COMPOSE_VERSION=1.10.0-rc1
-
+ENV JAVA_ALPINE_VERSION 8.111.14-r1
 
 #little overkill with pip but I'm LAZY!
 RUN apk add --no-cache py-pip
@@ -19,7 +19,6 @@ RUN { \
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 ENV PATH $PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin
 ENV JAVA_VERSION 8u111
-ENV JAVA_ALPINE_VERSION 8.111.14-r1
 RUN set -x \
 	&& apk add --no-cache \
 		openjdk8="$JAVA_ALPINE_VERSION" \

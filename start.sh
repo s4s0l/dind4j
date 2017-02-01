@@ -23,7 +23,6 @@ else
     if [ -z ${INTERACTIVE+x} ]; then
         su user -c "$*" & wait ${!}
     else
-        cat /etc/passwd
         su user -c "$*"
     fi
 fi
