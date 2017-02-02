@@ -49,12 +49,11 @@ directory that will be found in projects directory. Add it to git ignore.
 If RUNASUID variable is not set it will run as root.
 
 ### Running interactive command
-When using this image for running interactive command variable `INTERACTIVE=true`
-must be set. So to run bash:
+To run bash:
 
 ```$xslt
 docker run --privileged \
-    -e INTERACTIVE=true -e RUNASUID=$(id -u) \
+    -e RUNASUID=$(id -u) \
     --rm -ti sasol/dind4j:latest bash
 ```
 
@@ -78,3 +77,4 @@ build:
       ./gradlew --no-daemon --project-cache-dir=.cache --gradle-user-home=.cache clean test
 ```
 
+Gitlab CI, Travis CI also works.

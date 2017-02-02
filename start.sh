@@ -11,7 +11,7 @@ while true; do
   sleep 1
 done
 if [ -z ${RUNASUID+x} ]; then
-    if [ -z ${INTERACTIVE+x} ]; then
+    if [ ! -t 1 ]; then
         su -c "$*" & wait ${!}
     else
         su -c "$*"
@@ -20,7 +20,7 @@ else
     addgroup -g 997 docker
     chgrp docker /var/run/docker.sock
     adduser -u ${RUNASUID} -s /bin/bash -G docker -D user user
-    if [ -z ${INTERACTIVE+x} ]; then
+    if [ ! -t 1 ]; then
         su user -c "$*" & wait ${!}
     else
         su user -c "$*"
