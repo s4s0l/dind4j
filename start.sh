@@ -1,4 +1,5 @@
 #!/bin/bash
+rm -f /var/run/docker.pid
 set -e
 DAEMONPID=0
 trap 'echo SIGTERM; kill ${!}; kill $DAEMONPID; exit 143' SIGTERM
