@@ -24,6 +24,7 @@ RUN set -x \
 		openjdk8="$JAVA_ALPINE_VERSION" \
 	&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
 RUN apk add --no-cache bash
+RUN apk add --no-cache git openssh
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
 ENTRYPOINT ["/start.sh"]
