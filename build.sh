@@ -1,0 +1,1 @@
+docker build -t sasol/dind4j:beta .
