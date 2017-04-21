@@ -5,7 +5,7 @@ DAEMONPID=0
 trap 'echo SIGTERM; kill ${!}; kill $DAEMONPID; exit 143' SIGTERM
 trap 'echo SIGKILL; kill ${!}; kill $DAEMONPID; exit 137' SIGKILL
 trap 'echo SIGINT;  kill ${!}; kill $DAEMONPID; exit 130' INT
-dockerd --host=unix:///var/run/docker.sock --storage-driver=vfs &
+dockerd --host=unix:///var/run/docker.sock --storage-driver=aufs &
 DAEMONPID="$!"
 while true; do
   docker version && break
