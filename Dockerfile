@@ -1,6 +1,6 @@
-FROM docker:17.04.0-ce-dind
-ENV COMPOSE_VERSION=1.11.2
-ENV JAVA_ALPINE_VERSION 8.121.13-r0
+FROM docker:17.06.2-ce-dind
+ENV COMPOSE_VERSION=1.16.1
+ENV JAVA_ALPINE_VERSION 8.131.11-r2
 ENV VAGRANT_VERSION=1.9.3
 
 #little overkill with pip but I'm LAZY! and as there will be ansible....
