@@ -85,7 +85,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 
 RUN vagrant plugin install docker
 
-
+RUN apk add --no-cache openssl
 #
 ##############################################################
 
