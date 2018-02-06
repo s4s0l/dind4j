@@ -1,7 +1,7 @@
-FROM docker:17.06.2-ce-dind
-ENV COMPOSE_VERSION=1.16.1
-ENV JAVA_ALPINE_VERSION 8.131.11-r2
-ENV VAGRANT_VERSION=1.9.3
+FROM docker:18.01.0-ce-dind
+ENV COMPOSE_VERSION=1.19.0-rc3
+ENV JAVA_ALPINE_VERSION 8.151.12-r0
+ENV VAGRANT_VERSION=2.0.2
 
 #little overkill with pip but I'm LAZY! and as there will be ansible....
 RUN apk add --no-cache py-pip
@@ -32,6 +32,7 @@ RUN set -x \
 
 RUN apk add --no-cache bash
 RUN apk add --no-cache git openssh
+RUN rm -R usr/lib/python2.7/site-packages/PyYAML-3.12-py2.7.egg-info
 RUN apk add --no-cache ansible
 
 

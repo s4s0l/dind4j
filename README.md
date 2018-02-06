@@ -18,7 +18,7 @@ There is also docker-compose and openjdk8 (in the same manner as official
 [openjdk image](https://github.com/docker-library/openjdk/blob/0476812eabd178c77534f3c03bd0a2673822d7b9/8-jdk/alpine/Dockerfile "Source"))
 included. 
 
-Dind image runs dockerd in foreground so in order to use it you have to 
+Original Dind images runs dockerd in foreground so in order to use it you have to 
 start linked image. This may be inconvenient especially when you
 need to mount some directories to child containers during build. This
 image allows to run commands along started docker daemon in background.
@@ -47,6 +47,24 @@ current user. Dependencies and other cached by gradle files will land in .cache
 directory that will be found in projects directory. Add it to git ignore.
  
 If RUNASUID variable is not set it will run as root.
+
+### Not running dockrd
+
+DOCKERGUID is used to pass docker group id to container so that 
+it will match host docker group, useful if you for some reason 
+set SKIPDAEMON=true and mount /var/run/docker.sock. Container will add
+its internal 'user' user to a docker group with this id so it 
+will match your docker group. 
+
+```$xslt
+docker run  \
+    -e RUNASUID=$(id -u) \
+    -e DOCKERGUID=$(getent group docker | cut -d: -f3) \
+    -e SKIPDAEMON=true \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    --rm -ti sasol/dind4j:latest bash
+```
+
 
 ### Running interactive command
 To run bash:
@@ -78,3 +96,10 @@ build:
 ```
 
 Gitlab CI, Travis CI also works.
+
+### Internal user 'user'
+
+* has home folder in /user - you can mount stuff in there, just make sure its
+    contents are owned by RUNASUID
+    
+     
