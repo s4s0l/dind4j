@@ -17,9 +17,9 @@ fi
 
 if [ -z ${RUNASUID+x} ]; then
     if [ ! -t 1 ]; then
-        su -c "$*" & wait ${!}
+        exec "${@}" & wait ${!}
     else
-        su -c "$*"
+        exec "${@}"
     fi
 else
 
