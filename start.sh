@@ -17,7 +17,8 @@ fi
 
 if [ -z ${RUNASUID+x} ]; then
     if [ ! -t 1 ]; then
-        exec "${@}" & wait ${!}
+        exec "${@}" 
+	kill ${!}
     else
         exec "${@}"
     fi
