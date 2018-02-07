@@ -30,16 +30,16 @@ else
         delgroup ping
         addgroup -g $DOCKERGUID docker
     fi
-    #if we ru our own daemon we change it to docker group
+    #if we run our own daemon we change it to docker group
     if [ -z ${SKIPDAEMON+x} ]; then
         chgrp docker /var/run/docker.sock
     fi
 
     adduser -u ${RUNASUID} -s /bin/bash -H -G docker -D user user
 
-    if [ ! -d /user ]; then
-        mkdir /user
-        chown user /user
+    if [ ! -d /home/user ]; then
+        mkdir /home/user
+        chown user /home/user
     fi
 
     if [ ! -t 1 ]; then
