@@ -99,7 +99,7 @@ Gitlab CI, Travis CI also works.
 
 ### Internal user 'user'
 
-* has home folder in /user - you can mount stuff in there, just make sure its
+* has home folder in /home/user - you can mount stuff in there, just make sure its
     contents are owned by RUNASUID
     
      

@@ -35,7 +35,7 @@ else
         chgrp docker /var/run/docker.sock
     fi
 
-    adduser -u ${RUNASUID} -s /bin/bash -H -h /user -G docker -D user user
+    adduser -u ${RUNASUID} -s /bin/bash -H -G docker -D user user
 
     if [ ! -d /user ]; then
         mkdir /user
